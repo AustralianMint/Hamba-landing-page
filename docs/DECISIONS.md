@@ -13,6 +13,7 @@ Brief log of implementation choices for the Hamba landing page. Update this file
 | Styling | **Tailwind CSS v4** | Utility-first, ships with CNA template; `@import "tailwindcss"` in `globals.css` |
 | Linting | **ESLint 9** + `eslint-config-next` | Core Web Vitals + TypeScript rules aligned with Next.js |
 | Animation | **Framer Motion 12** | Requested; works well with React client components |
+| Fonts | **Playfair Display (serif) + Inter (sans)** via `next/font/google` | Editorial serif headlines + clean sans body; replaced the CNA default Geist pair |
 
 **Scaffold command:** `create-next-app` with `--typescript --tailwind --eslint --app --src-dir --import-alias "@/*"`.
 
@@ -59,9 +60,10 @@ Animated UI lives in client components under `src/components/` (e.g. `landing/he
 
 ## Styling
 
-- **Design tokens** — CSS variables in `:root` (`--background`, `--foreground`) wired into Tailwind via `@theme inline` in `globals.css`.
-- **Dark mode** — `prefers-color-scheme: dark` on `:root` (no `next-themes` yet); add a theme provider later if manual toggle is needed.
-- **Body font** — `font-sans` on `<body>` uses Geist via theme `--font-sans`.
+- **Design tokens** — CSS variables in `:root` (`--background`, `--foreground`, `--accent`) wired into Tailwind via `@theme inline` in `globals.css`. Use token utilities (`bg-background`, `text-foreground`, `text-accent`, `bg-accent`) instead of inline hex.
+- **Brand palette** — deep forest green `--background` (`#1a3a2a`), cream `--foreground` (`#f5f0e8`), muted moss green `--accent` (`#5a9e6f`).
+- **Dark mode** — removed the `prefers-color-scheme` override; the page is intentionally branded forest-green in all schemes. Revisit if a true light/dark toggle is needed.
+- **Fonts** — `--font-sans` → Inter (body), `--font-serif` → Playfair Display (headlines), both exposed as `font-sans` / `font-serif` utilities.
 
 ---
 
