@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Hamba Landing Page
 
-## Getting Started
+Next.js landing page with TypeScript, Tailwind CSS v4, ESLint, and Framer Motion.
 
-First, run the development server:
+## Stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Next.js 16** — App Router, React Server Components by default
+- **TypeScript** — strict mode
+- **Tailwind CSS v4** — `@import "tailwindcss"` in `globals.css`
+- **ESLint** — `eslint-config-next` (Core Web Vitals + TypeScript)
+- **Framer Motion** — lazy-loaded via `LazyMotion` + `m` components
+
+## Project structure
+
+```
+docs/             # project documentation (see DECISIONS.md)
+src/
+  app/              # routes, layouts, global styles
+  components/       # UI (use "use client" only when needed)
+  lib/              # shared utilities (e.g. motion exports)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Scripts
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run dev        # development server (http://localhost:3000)
+npm run build      # production build
+npm run start      # serve production build
+npm run lint       # ESLint
+npm run typecheck  # TypeScript without emit
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Framer Motion
 
-## Learn More
+Animations live in **client components** (`"use client"`). The root layout wraps the app in `MotionProvider`, which enables lazy-loaded features. Import from `@/lib/motion` and use `m.p`, `m.div`, etc. (not `motion`) for the smallest bundle.
 
-To learn more about Next.js, take a look at the following resources:
+## Environment variables
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Copy `.env.example` to `.env.local` for local secrets and public config. Never commit `.env.local`.
