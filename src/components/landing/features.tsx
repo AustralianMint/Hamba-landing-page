@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import type { Variants } from "framer-motion";
+import { AppStoreButton } from "@/components/landing/app-store-button";
 import { m } from "@/lib/motion";
 
 const container: Variants = {
@@ -30,7 +31,7 @@ const rise: Variants = {
 const secondaryFeatures = [
   {
     title: "Curated, not generated",
-    body: "No algorithm, no noise. Every spot is chosen by someone who went looking, so you skip the duds and go straight to the good ones.",
+    body: "Nothing here is automated. Some spots were found on foot, others came from friends, but every one was checked in person before it made the map.",
     icon: (
       <svg
         aria-hidden="true"
@@ -48,7 +49,7 @@ const secondaryFeatures = [
   },
   {
     title: "Set the mood",
-    body: "Each spot pairs with ambient background music and switchable map styles, so the app sets the tone before you even arrive.",
+    body: "Explore spots with calm, orignal music made by students at CODE University in Berlin. Hamba was built there too",
     icon: (
       <svg
         aria-hidden="true"
@@ -88,7 +89,7 @@ export function Features() {
               alt="A weathered wooden bench beside a tree-lined path along the water in Berlin"
               fill
               sizes="(max-width: 768px) 90vw, 40vw"
-              className="object-cover object-[center_70%]"
+              className="object-cover object-[center_95%]"
             />
           </div>
 
@@ -97,11 +98,9 @@ export function Features() {
               Somewhere to sit
             </h2>
             <p className="mt-5 text-base leading-relaxed text-foreground/75 sm:text-lg">
-              Hamba points you to calm corners where you can actually sit down
-              and stay a while &mdash; benches, watersides, and quiet green
-              spaces, each one handpicked and personally visited. The spots
-              worth knowing when you&rsquo;re out and need somewhere good to
-              land.
+              Out with friends and no idea where to sit?
+              Hamba points you to a calm corner nearby: a bench, a waterside, a quiet green space.
+              Every spot is handpicked and personally visited, so you've always got a good place to take people"
             </p>
           </div>
         </m.article>
@@ -125,6 +124,10 @@ export function Features() {
               </p>
             </m.article>
           ))}
+        </m.div>
+
+        <m.div variants={rise} className="mt-16 flex justify-center sm:mt-20">
+          <AppStoreButton variant="wide" />
         </m.div>
       </m.div>
     </section>
