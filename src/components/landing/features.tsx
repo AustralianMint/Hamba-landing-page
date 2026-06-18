@@ -100,7 +100,7 @@ export function Features() {
             <p className="mt-5 text-base leading-relaxed text-foreground/75 sm:text-lg">
               Out with friends and no idea where to sit?
               Hamba points you to a calm corner nearby: a bench, a waterside, a quiet green space.
-              Every spot is handpicked and personally visited, so you've always got a good place to take people"
+              Every spot is handpicked and personally visited, so you've always got a good place to take people
             </p>
           </div>
         </m.article>
